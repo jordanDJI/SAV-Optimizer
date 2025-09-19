@@ -1,17 +1,16 @@
 from datetime import datetime, timedelta
 import re
-import os
+from keyword import detect_keywords, get_main_category
 
-# Liste de mots-clés par gravité
-CRITICAL_KEYWORDS = ["urgent", "aucune connexion", "plus d’internet", "en panne", "bloqué", "bug", "rien ne marche"]
+# Mots-clés spécifiques (à garder si nécessaires)
 THREAT_KEYWORDS = ["inadmissible", "je vais résilier", "honteux", "inacceptable"]
 SPAM_PATTERN = r"^[#\s🫠🤡🔥🌈💀😂❤️]*$"
 
-# Seuils pour surcharge
-MAX_PENDING_REQUESTS = 100  # au-delà = surcharge
+# Seuil de saturation
+MAX_PENDING_REQUESTS = 100
 
-def detect_critical_keywords(text: str, keywords: list[str]) -> bool:
-    return any(kw.lower() in text.lower() for kw in keywords)
+def detect_threats(text: str) -> bool:
+    return any(kw.lower() in text.lower() for kw in THREAT_KEYWORDS)
 
 def is_spam(text: str) -> bool:
     return re.fullmatch(SPAM_PATTERN, text.strip()) is not None
@@ -36,14 +35,14 @@ def calculate_priority(message: dict, pending_volume: int = 0) -> str:
 
     # Cas 2 : Problème technique urgent
     if category == "problème technique":
-        if detect_critical_keywords(text, CRITICAL_KEYWORDS):
+        if detect_threats(text):
             if datetime.now() - created_at > timedelta(hours=1):
                 return "critique"
             return "élevée"
 
     # Cas 3 : Plainte émotionnelle
     if category == "plainte" and sentiment == "négatif":
-        if detect_critical_keywords(text, THREAT_KEYWORDS):
+        if detect_threats(text):
             return "élevée"
 
     # Cas 4 : Suggestion ou remerciement
