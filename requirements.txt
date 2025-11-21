@@ -1,15 +1,16 @@
 pandas
 openai>=1.0.0
 mistralai>=0.1.0
-streamlit>=1.37.0
-plotly>=5.17.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
 python-dotenv
 tqdm>=4.66.0
 tenacity>=8.2.0
-altair
 pyarrow==17.0.0
 nltk>=3.8.0
-
+streamlit>=1.28.0
+altair>=5.0.0          # Charts (plus léger que Plotly)
+plotly>=5.0.0         # Pour certains graphs complexes
+streamlit-shortcuts    # Raccourcis clavier (optionnel)
+pyarrow      
 
