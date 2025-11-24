@@ -22,7 +22,7 @@ Le projet repose sur un pipeline complet : ingestion → nettoyage → NLP → L
 | **Émilienne Ekassi**     | Data Engineer        | Conception du pipeline technique, nettoyage et transformation des données, orchestration complète du traitement.   |
 | **Kevine FIANGUEU SIABO** | Data Scientist (NLP) | Développement des règles NLP, conception des prompts LLM, classification automatique, détection du sarcasme.      |
 | **Jordan DJILLA**        | Product Owner        | Recueil du besoin, priorisation des fonctionnalités, validation continue et communication avec le client.           |
-| **Mohamed ABOU ABDILLAH **   | DevOps / MLOps       | Gestion environnement, intégration, automatisation, industrialisation du pipeline et optimisation des performances. |
+| **Mohamed ABOU ABDILLAH**   | DevOps / MLOps       | Gestion environnement, intégration, automatisation, industrialisation du pipeline et optimisation des performances. |
 
 ---
 
